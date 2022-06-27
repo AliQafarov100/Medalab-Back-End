@@ -1,0 +1,19 @@
+﻿@model Gallery
+@{
+    ViewData["Title"] = "Delete";
+}
+<div>
+    <div>
+        <p>Id</p>
+        <h4>@Model.Id</h4>
+    </div>
+    <div>
+        <p>Image:</p>
+        <img src="~/assets/Image/Galerys/@Model.Image" alt="Alternate Text" style="width: 400px; height: 200px;" />
+    </div>
+    <form method="post">
+        <button type="submit" class="btn btn-danger">Delete</button>
+        <button type="submit" class="btn btn-primary" asp-action="Index">Back to List</button>
+    </form>
+</div>
+

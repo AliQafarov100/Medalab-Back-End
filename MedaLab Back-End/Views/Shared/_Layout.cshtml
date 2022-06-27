@@ -1,0 +1,180 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+          integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="/assets/scss/css/style.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <header>
+        <nav class="topbar">
+            <div class="container">
+                <div class="row ">
+                    <div class="col-lg-6 col-md-12 col-sm-12 col-12 contacts">
+                        <ul class="d-flex justify-content-start align-items-center">
+                            <li>
+                                <span><a href=""><i class="fa-solid fa-envelope"></i></a></span><span>
+                                    <a href=""
+                                       class="ms-2">contact@example.com</a>
+                                </span>
+                            </li>
+                            <li>
+                                <span><a href=""><i class="fa-solid fa-mobile-button"></i></a></span><span>
+                                    <a href=""
+                                       class="ms-2">+994 5589 55488</a>
+                                </span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-6 medias">
+                        <ul class="d-flex justify-content-end">
+                            <li><a href=""><i class="fa-brands fa-twitter"></i></a></li>
+                            <li><a href=""><i class="fa-brands fa-facebook"></i></a></li>
+                            <li><a href=""><i class="fa-brands fa-instagram"></i></a></li>
+                            <li><a href=""><i class="fa-brands fa-invision"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div>
+        @RenderBody()
+    </div>
+    <footer>
+        <section id="footer-section" class="py-5">
+            <div class="container">
+                <div class="row">
+                    <div class="footer-part col-lg-2 col-md-6 col-sm-6">
+                        <h3>@layout.GetDatas().Result.FirstOrDefault(i => i.Key == "FooterLogo").Value</h3>
+                        <p>
+                            A108 Adam Street
+                            New York, NY 535022
+                            United States
+                        </p>
+                        <p><span style="font-weight: bold;">Phone:</span><span>+1 5589 55488 55</span></p>
+                        <p><span style="font-weight: bold;">Email:</span><span>info@example.com</span></p>
+                    </div>
+                    <div class="footer-part col-lg-2 col-md-6 col-sm-6">
+                        <strong>Useful Links</strong>
+                        <ul>
+                            <li>
+                                <span><i class="fa-solid fa-angle-right"></i></span><span class="ms-2">
+                                    <a href="">Home</a>
+                                </span>
+                            </li>
+                            <li>
+                                <span><i class="fa-solid fa-angle-right"></i></span><span class="ms-2">
+                                    <a href="">
+                                        About
+                                        us
+                                    </a>
+                                </span>
+                            </li>
+                            <li>
+                                <span><i class="fa-solid fa-angle-right"></i></span><span class="ms-2">
+                                    <a href="">Services</a>
+                                </span>
+                            </li>
+                            <li>
+                                <span><i class="fa-solid fa-angle-right"></i></span><span class="ms-2">
+                                    <a href="">
+                                        Terms
+                                        of service
+                                    </a>
+                                </span>
+                            </li>
+                            <li>
+                                <span><i class="fa-solid fa-angle-right"></i></span><span class="ms-2">
+                                    <a href="">Privacy policy</a>
+                                </span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="footer-part col-lg-2 col-md-6 col-sm-6">
+                        <strong>Our Services</strong>
+                        <ul>
+                            <li>
+                                <span><i class="fa-solid fa-angle-right"></i></span><span class="ms-2">
+                                    <a href="">
+                                        Web
+                                        Design
+                                    </a>
+                                </span>
+                            </li>
+                            <li>
+                                <span><i class="fa-solid fa-angle-right"></i></span><span class="ms-2">
+                                    <a href="">
+                                        Web
+                                        Development
+                                    </a>
+                                </span>
+                            </li>
+                            <li>
+                                <span><i class="fa-solid fa-angle-right"></i></span><span class="ms-2">
+                                    <a href="">Product Management</a>
+                                </span>
+                            </li>
+                            <li>
+                                <span><i class="fa-solid fa-angle-right"></i></span><span class="ms-2">
+                                    <a href="">Marketing</a>
+                                </span>
+                            </li>
+                            <li>
+                                <span><i class="fa-solid fa-angle-right"></i></span><span class="ms-2">
+                                    <a href="">Graphic Design</a>
+                                </span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="footer-part col-lg-2">
+
+                    </div>
+                    <div class="footer-part col-lg-3 col-md-6 col-sm-6">
+                        <strong>Join Our Newsletter</strong>
+                        <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna</p>
+                        <div class="subscribe d-flex justify-content-end">
+                            <input type="text">
+                            <a href="" class="btn btn-primary">Subscribe</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="endl-section" class="py-4">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-12">
+                        <span>
+                            © Copyright Medilab. All Rights Reserved <br>
+                            <p>Designed by <a href="">BootstrapMade</a></p>
+                        </span>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-12 d-flex justify-content-end">
+                        <ul class="d-flex">
+                            <li><a href="@layout.GetDatas().Result.FirstOrDefault(i => i.Key == "Twitter").Url"><i class="@layout.GetDatas().Result.FirstOrDefault(i => i.Key == "Twitter").Value"></i></a></li>
+                            <li><a href="@layout.GetDatas().Result.FirstOrDefault(i => i.Key == "Facebook").Url"><i class="@layout.GetDatas().Result.FirstOrDefault(i => i.Key == "Facebook").Value"></i></a></li>
+                            <li><a href="@layout.GetDatas().Result.FirstOrDefault(i => i.Key == "Instagram").Url"><i class="@layout.GetDatas().Result.FirstOrDefault(i => i.Key == "Instagram").Value"></i></a></li>
+                            <li><a href="@layout.GetDatas().Result.FirstOrDefault(i => i.Key == "Invision").Url"><i class="@layout.GetDatas().Result.FirstOrDefault(i => i.Key == "Invision").Value"></i></a></li>
+                            <li><a href="@layout.GetDatas().Result.FirstOrDefault(i => i.Key == "Skype").Url"><i class="@layout.GetDatas().Result.FirstOrDefault(i => i.Key == "Skype").Value"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+            crossorigin="anonymous"></script>
+</body>
+
+</html>

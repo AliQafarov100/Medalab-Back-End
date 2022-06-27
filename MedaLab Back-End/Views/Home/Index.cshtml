@@ -1,0 +1,289 @@
+﻿@model HomeVM
+@{
+    ViewData["Title"] = "Index";
+}
+<main>
+    <section id="navbar-section" class="sticky-top">
+        <div class="container">
+            <div class="row">
+                <nav class="navbar ">
+                    <div class="container">
+                        <div class="logo col-lg-6">
+                            <a href="">
+                                <h1>@layout.GetDatas().Result.FirstOrDefault(i => i.Key == "HeaderLogo").Value</h1>
+                            </a>
+                        </div>
+                        <div class="services col-lg-6">
+                            <ul class="d-flex justify-content-end">
+                                <li><a href="">Home</a></li>
+                                <li><a href="">About</a></li>
+                                <li><a href="">Services</a></li>
+                                @if (User.Identity.IsAuthenticated)
+                                {
+                                    <li><a asp-controller="Account" asp-action="Edit">@User.Identity.Name</a></li>
+                                    <li><a asp-controller="Account" asp-action="Logout">Logout</a></li>
+                                }
+                                else
+                                {
+                                    <li><a asp-controller="Account" asp-action="Regiter">Register</a></li>
+                                    <li><a asp-controller="Account" asp-action="Login">Login</a></li>
+                                }
+                                <li><a href="">Doctors</a></li>
+                                <li><a href="">DropDown</a></li>
+                                <li><a href="">Contact</a></li>
+                            </ul>
+                        </div>
+                        <button class="navbar-toggler w-25 col-lg-6" type="button" data-bs-toggle="offcanvas"
+                                data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar"
+                             aria-labelledby="offcanvasNavbarLabel">
+                            <div class="offcanvas-header">
+                                <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Offcanvas</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="offcanvas"
+                                        aria-label="Close"></button>
+                            </div>
+                            <div class="offcanvas-body">
+                                <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#">Link</a>
+                                    </li>
+                                    <li class="nav-item dropdown">
+                                        <a class="nav-link dropdown-toggle" href="#" id="offcanvasNavbarDropdown"
+                                           role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                            Dropdown
+                                        </a>
+                                        <ul class="dropdown-menu" aria-labelledby="offcanvasNavbarDropdown">
+                                            <li><a class="dropdown-item" href="#">Action</a></li>
+                                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                                            <li>
+                                                <hr class="dropdown-divider">
+                                            </li>
+                                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                                <form class="d-flex" role="search">
+                                    <input class="form-control me-2" type="search" placeholder="Search"
+                                           aria-label="Search">
+                                    <button class="btn btn-outline-success" type="submit">Search</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </section>
+    <section id="main-section" style="background-image: url(assets/Image/Main/hero-bg.jpg);">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="description">
+                    <h1>WELCOME TO MEDILAB</h1>
+                    <p>We are team of talented designers making websites with Bootstrap</p>
+                    <a href="" class="btn btn-primary">GET STARTED</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="card-section">
+        <div class="container">
+            <div class="row">
+                @foreach (Card card in Model.Cards.Where(c => c.IsMain == true))
+                {
+                    <div class="cards isMain text-light col-lg-3 col-md-12 col-sm-12 col-12">
+                        <div class="punkt py-3">
+                            <h4>@card.Title</h4>
+                            <p>
+                                @card.SubTitle
+                            </p>
+                            <a href="" class="btn btn-primary mainBtn">Get Started</a>
+                        </div>
+                    </div>
+                }
+                @foreach (Card anotherCard in Model.Cards.Where(c => c.IsMain == false))
+                {
+                    <div class="cards another col-lg-3 col-md-12 col-sm-12 col-12">
+                        <div class="punkt">
+                            <i class="@anotherCard.Icon"></i>
+                            <h4>@anotherCard.Title</h4>
+                            <p>@anotherCard.SubTitle</p>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </section>
+    <section id="service-card">
+        <div class="container">
+            <div class="row">
+                <h3 class="text-center">@layout.GetDatas().Result.FirstOrDefault(i => i.Key == "ServiceLogo").Value</h3>
+                <p class="text-center">
+                    Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid
+                    fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui
+                    impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.
+                </p>
+                @foreach (ServiceCard service in Model.Services)
+                {
+                    <div class="col-lg-4">
+                        <div class="service-punkt">
+                            <i class="@service.Icon"></i>
+                            <h5>@service.Title</h5>
+                            <span>@service.Description</span>
+                        </div>
+
+                    </div>
+                }
+            </div>
+        </div>
+    </section>
+    <section id="appointment" class="mt-5 py-5">
+        <div class="container">
+            <h3 class="text-center" style="color: #2c4964;">@layout.GetDatas().Result.FirstOrDefault(i => i.Key == "AppointmentLogo").Value</h3>
+            <p class="text-center">
+                Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga
+                eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit
+                suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.
+            </p>
+            <div class="row justify-content-between">
+                <div class="col-lg-4 col-md-6 inputs">
+                    <form action="">
+                        <input type="text" placeholder="Your name">
+                    </form>
+                </div>
+                <div class="col-lg-4 col-md-6 inputs">
+                    <form action="">
+                        <input type="text" placeholder="Your Email">
+                    </form>
+                </div>
+                <div class="col-lg-4 col-md-6 inputs">
+                    <form action="">
+                        <input type="tel" placeholder="Your Phone">
+                    </form>
+                </div>
+                <div class="col-lg-4 col-md-6 inputs">
+                    <form action="">
+                        <input type="datetime" placeholder="Appointment Date">
+                    </form>
+                </div>
+                <div class="col-lg-4 col-md-6 inputs">
+                    <form action="">
+                        <input type="text" placeholder="Select Departaments">
+                    </form>
+                </div>
+                <div class="col-lg-4 col-md-6 inputs">
+                    <form action="">
+                        <input type="text" placeholder="Select Doctor">
+                    </form>
+                </div>
+                <div class="text-area col-lg-12">
+                    <textarea name="" id="" cols="30" rows="6" placeholder="Message(Optional)"></textarea>
+                </div>
+                <a href="" class="btn btn-primary make">Make Appointment</a>
+            </div>
+        </div>
+    </section>
+    <section id="doctor-section" class="py-5">
+        <div class="container">
+            <div class="row">
+                <h3 class="text-center" style="color: #2c4964;">@layout.GetDatas().Result.FirstOrDefault(i => i.Key == "DoctorsLogo").Value</h3>
+                <p class="text-center">
+                    Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid
+                    fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui
+                    impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.
+                </p>
+                @foreach (Doctor doctor in Model.Doctors)
+                {
+                    <div class="doctors col-lg-6 text-center">
+                        <div class="datas row d-flex py-5">
+                            <div class="image col-lg-6 col-md-12 col-sm-12">
+                                <img src="/assets/Image/Doctors/@doctor.Image" alt="">
+                            </div>
+                            <div class="about col-lg-6 col-md-12 col-sm-12">
+                                <strong>@doctor.Fullname</strong>
+                                <p>
+                                    @doctor.Profession.Name.ToString()
+                                </p>
+                                <div class="line"></div>
+                                <p class="mt-2">@doctor.About</p>
+                                <div class="social-medias">
+                                    <ul class="d-flex">
+                                        <li><a href="@layout.GetDatas().Result.FirstOrDefault(i => i.Key == "Twitter").Url"><i class="@layout.GetDatas().Result.FirstOrDefault(i => i.Key == "Twitter").Value"></i></a></li>
+                                        <li><a href="@layout.GetDatas().Result.FirstOrDefault(i => i.Key == "Facebook").Url"><i class="@layout.GetDatas().Result.FirstOrDefault(i => i.Key == "Facebook").Value"></i></a></li>
+                                        <li><a href="@layout.GetDatas().Result.FirstOrDefault(i => i.Key == "Instagram").Url"><i class="@layout.GetDatas().Result.FirstOrDefault(i => i.Key == "Instagram").Value"></i></a></li>
+                                        <li><a href="@layout.GetDatas().Result.FirstOrDefault(i => i.Key == "Invision").Url"><i class="@layout.GetDatas().Result.FirstOrDefault(i => i.Key == "Invision").Value"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </section>
+    <section id="galery-section" class="py-5">
+        <div class="container">
+            <h3 class="text-center" style="color: #2c4964;">@layout.GetDatas().Result.FirstOrDefault(i => i.Key == "GaleryLogo").Value</h3>
+            <p class="text-center">
+                Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga
+                eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit
+                suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.
+            </p>
+        </div>
+        <div class="row">
+            @foreach (Gallery gallery in Model.Galleries)
+            {
+                <div class="galerys col-lg-3"><img src="/assets/Image/Galerys/@gallery.Image" alt=""></div>
+            }
+        </div>
+    </section>
+    <section id="contact-section" class="py-5">
+        <div class="container">
+            <h3 class="text-center" style="color: #2c4964;">@layout.GetDatas().Result.FirstOrDefault(i => i.Key == "ContactLogo").Value</h3>
+            <p class="text-center">
+                Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga
+                eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit
+                suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.
+            </p>
+        </div>
+        <div style="width: 100%;" class="mb-5">
+            <iframe style="height: 400px"
+                    src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d2965.0824050173574!2d-93.63905729999999!3d41.998507000000004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sWebFilings%2C+University+Boulevard%2C+Ames%2C+IA!5e0!3m2!1sen!2sus!4v1390839289319"
+                    width="100%" height="200" frameborder="0" style="border:0"></iframe>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 address">
+                    @foreach (Address address in Model.Addresses)
+                    {
+                        <div class="data location d-flex align-items-center">
+                            <div class="icons">
+                                <i class="@address.Icon"></i>
+                            </div>
+                            <div class="address-datas ms-2">
+                                <strong>@address.Title</strong> <br>
+                                <span>@address.Data</span>
+                            </div>
+                        </div>
+                    }
+                </div>
+                <div class="col-lg-7">
+                    <div class="autorization d-flex justify-content-between">
+                        <input type="text" placeholder="Your Name">
+                        <input type="text" placeholder="Your Email">
+                    </div>
+                    <div class="subject mt-3">
+                        <input type="text" placeholder="Subject">
+                        <textarea name="" id="" cols="30" rows="6" placeholder="Message"></textarea>
+                    </div>
+                    <a href="" class="btn btn-primary send">Send Message</a>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
